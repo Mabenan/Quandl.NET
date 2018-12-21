@@ -6,6 +6,8 @@ using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Quandl.NET
 {
@@ -37,7 +39,6 @@ namespace Quandl.NET
             {
                 return await $"{Constant.HostUri}/datasets/{databaseCode}/{datasetCode}/data.json"
                     .SetQueryParam("limit", limit)
-                    .SetQueryParam("column_index", columnIndex)
                     .SetQueryParam("start_date", startDate?.ToString("yyyy-MM-dd"))
                     .SetQueryParam("end_date", endDate?.ToString("yyyy-MM-dd"))
                     .SetQueryParam("order", order.ToEnumMemberValue())
@@ -77,7 +78,6 @@ namespace Quandl.NET
             {
                 return await $"{Constant.HostUri}/datasets/{databaseCode}/{datasetCode}/data.{returnFormat.ToEnumMemberValue()}"
                     .SetQueryParam("limit", limit)
-                    .SetQueryParam("column_index", columnIndex)
                     .SetQueryParam("start_date", startDate?.ToString("yyyy-MM-dd"))
                     .SetQueryParam("end_date", endDate?.ToString("yyyy-MM-dd"))
                     .SetQueryParam("order", order.ToEnumMemberValue())

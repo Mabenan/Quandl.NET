@@ -37,7 +37,7 @@ namespace Quandl.NET
         }
     }
 
-    internal static class Constant
+    public static class Constant
     {
         public const string HostUri = "https://www.quandl.com/api/v3";
     }
